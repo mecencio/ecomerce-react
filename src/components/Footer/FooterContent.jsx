@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class List extends Component {
     render () {
-        const output = this.props.datos.categorias.map(
+        const output = this.props.categorias.map(
             item => <li className="list-group-item border border-0 px-0 py-1 bg-transparent" key={item.id}>
                         <a className="text-decoration-none text-body" href={item.link}>
                             {item.nombre}
@@ -12,7 +12,7 @@ class List extends Component {
 
         return (
             <div className="col-6 col-lg-2 mb-3">
-            <h5 className="">{this.props.datos.titulo}</h5>
+            <h5 className="">{this.props.titulo}</h5>
             <ul className="list-group list-group-flush">
                 {output}
             </ul>
@@ -59,11 +59,11 @@ class FooterContent extends Component {
                         <span className="py-4 ms-lg-3 ms-xxl-5 text-success fw-bold fst-italic font-monospace text-uppercase" href="#">G a m e </span>
                         <span className="py-4 text-nowrap text-success fw-bold fst-italic font-monospace text-uppercase" href="#"> O v e r</span>
                     </div>
-                    <List datos={{titulo:"Links", categorias:array_links}} />
-                    <List datos={{titulo:"Categoria", categorias:array_categories}} />
-                    <List datos={{titulo:"Marcas", categorias:array_marcas}} />
-                    <List datos={{titulo:"Marcas", categorias:array_marcas}} />
-                    <List datos={{titulo:"Ayuda", categorias:array_ayuda}} />
+                    <List titulo={"Links"} categorias={array_links} />
+                    <List titulo={"Categoria"} categorias={array_categories} />
+                    <List titulo={"Marcas"} categorias={array_marcas} />
+                    <List titulo={"Marcas"} categorias={array_marcas} />
+                    <List titulo={"Ayuda"} categorias={array_ayuda} />
                 </div>
             </div>
         );
