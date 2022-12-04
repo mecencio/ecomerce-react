@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-
 function PoweredBy () {
     return (
         <div className="text-center py-2">

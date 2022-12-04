@@ -1,5 +1,3 @@
-import React from "react";
-
 function Card (props) {
     const output = props.datos.map(
         item => <div className="card text-center" style={{width: "15rem"}} key={item.id}>

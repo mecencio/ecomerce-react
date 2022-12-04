@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-
 function User () {
     return(
         <div className="my-4">

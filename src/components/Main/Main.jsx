@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import Slide from "./MainSlide"
 import ItemListContainer from "./ItemListContainer";
 

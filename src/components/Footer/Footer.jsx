@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import FooterContent from "./FooterContent";
 import PoweredBy from "./PoweredBy";
 

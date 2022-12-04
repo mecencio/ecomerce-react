@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import User from "./User";
 import CartWidget from "./CartWidget"
@@ -6,7 +5,7 @@ import CartWidget from "./CartWidget"
 function NavBar () {
     return(
         <nav className="navbar navbar-expand-lg bg-light">
-            <div className="container-fluid">
+            <div className="container-fluid mx-5">
                 <a className="navbar-brand ms-5 text-success fw-bold fst-italic font-monospace text-uppercase" href="#">G a m e &nbsp; O v e r</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

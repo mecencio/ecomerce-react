@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-
 function SearchBar () {
     return (
         <form className="d-flex col-4" role="search">

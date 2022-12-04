@@ -1,5 +1,3 @@
-import React from "react";
-
 function List (props) {
     const output = props.categorias.map(
         item => <li className="list-group-item border border-0 px-0 py-1 bg-transparent" key={item.id}>

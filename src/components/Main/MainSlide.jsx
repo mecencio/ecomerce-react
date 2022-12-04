@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-
 function MainSlide () {
     return (
         <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
