@@ -5,6 +5,7 @@ function Breadcrumb(props) {
             <ol className="breadcrumb">
                 <li className="breadcrumb-item">Inicio</li>
                 <li className="breadcrumb-item" aria-current="page">{props.item.category}</li>
+                <li className="breadcrumb-item" aria-current="page">{props.item.brand}</li>
                 <li className="breadcrumb-item active" aria-current="page">{props.item.name}</li>
             </ol>
         </nav>

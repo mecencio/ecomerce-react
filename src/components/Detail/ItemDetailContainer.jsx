@@ -17,7 +17,7 @@ function ItemDetailContainer (props) {
     }, []);
 
     return(
-        <div className="container my-5">
+        <div className="container my-3">
             { 
                 loading? 
                     <Spinner />

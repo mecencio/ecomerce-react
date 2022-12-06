@@ -9,7 +9,6 @@ function App () {
         <div>
             <NavBar />
             <Main />
-            <ItemDetailContainer item={arr_prod[1]}/>
             <Footer />
         </div>
     );
