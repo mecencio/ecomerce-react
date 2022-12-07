@@ -1,4 +1,4 @@
-export     const arr_prod = [
+export const arr_prod = [
     {
         id: 1, 
         name:"Placa de Video AMD RADEON Asus RX 6900 XT TUF GAMING OC 16GB GDDR6", 

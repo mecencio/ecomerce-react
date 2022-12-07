@@ -11,10 +11,10 @@ function MainSlide () {
                     <img src={"images/asusbanner.webp"} className="d-block w-100" alt="asus-banner"/>
                 </div>
                 <div className="carousel-item">
-                    <img src={"images/asusbanner.webp"} className="d-block w-100" alt="..."/>
+                    <img src={"images/asusbanner.webp"} className="d-block w-100" alt="asus-banner"/>
                 </div>
                 <div className="carousel-item">
-                    <img src={"images/asusbanner.webp"} className="d-block w-100" alt="..."/>
+                    <img src={"images/asusbanner.webp"} className="d-block w-100" alt="asus-banner"/>
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

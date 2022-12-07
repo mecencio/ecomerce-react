@@ -1,34 +1,14 @@
 import List from "./List";
+import { brands } from "../../utils/brands";
+import { categories } from "../../utils/categories";
+
 
 function FooterContent () {
-    let array_links =[
-        {id:1 ,nombre:"Inicio", link:"#"},
-        {id:2 ,nombre:"Quienes Somos", link:"#"},
-        {id:3 ,nombre:"Contáctenos", link:"#"},
-    ];
+    let array_links =["Inicio", "Quienes Somos", "Contáctenos"];
 
-    let array_categories = [
-        {id:4 ,nombre:"Placas de videos", link:"#"},
-        {id:5 ,nombre:"Procesadores", link:"#"},
-        {id:6 ,nombre:"Memorias", link:"#"},
-        {id:7 ,nombre:"Almacenamiento", link:"#"},
-        {id:8 ,nombre:"Todas las categorias", link:"#"},
-    ];
+    let array_ayuda =["FAQ", "Politica de privacidad", "Botón de arrepentimiento"];
 
-    let array_marcas =[
-        {id:9 ,nombre:"Intel", link:"#"},
-        {id:10 ,nombre:"AMD", link:"#"},
-        {id:11 ,nombre:"Asus", link:"#"},
-        {id:12 ,nombre:"Nvidia", link:"#"},
-        {id:13 ,nombre:"Msi", link:"#"},
-    ];
-
-    let array_ayuda =[
-        {id:14 ,nombre:"FAQ", link:"#"},
-        {id:15 ,nombre:"Politica de privacidad", link:"#"},
-        {id:16 ,nombre:"Botón de arrepentimiento", link:"#"},
-    ];
-
+    console.log(brands)
     return(
         <div className="container-fluid py-4 py-md-5 px-4 px-md-3">
             <div className="row">
@@ -36,11 +16,10 @@ function FooterContent () {
                     <span className="py-4 ms-lg-3 ms-xxl-5 text-success fw-bold fst-italic font-monospace text-uppercase" href="#">G a m e </span>
                     <span className="py-4 text-nowrap text-success fw-bold fst-italic font-monospace text-uppercase" href="#"> O v e r</span>
                 </div>
-                <List titulo={"Links"} categorias={array_links} />
-                <List titulo={"Categoria"} categorias={array_categories} />
-                <List titulo={"Marcas"} categorias={array_marcas} />
-                <List titulo={"Marcas"} categorias={array_marcas} />
-                <List titulo={"Ayuda"} categorias={array_ayuda} />
+                <List title={"Links"} group={"link"} arr={array_links} />
+                <List title={"Categorias"} group={"category"} arr={categories} />
+                <List title={"Marcas"} group={"brand"} arr={brands} />
+                <List title={"Ayuda"} group={"help"} arr={array_ayuda} />
             </div>
         </div>
     );
