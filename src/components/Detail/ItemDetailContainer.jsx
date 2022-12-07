@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchBase } from "../../utils/fetchBase";
-import ItemList from "../Main/ItemList";
-import Spinner from "../Main/Spinner";
+import Spinner from "../General/Spinner";
 import Breadcrumb from "./Breadcrumb";
 import ItemDetail from "./ItemDetail";
+import ItemList from "../ItemList/ItemList"
 
 function ItemDetailContainer (props) {
     const [product, setProduct] = useState({});

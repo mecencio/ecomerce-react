@@ -8,7 +8,6 @@ function FooterContent () {
 
     let array_ayuda =["FAQ", "Politica de privacidad", "Botón de arrepentimiento"];
 
-    console.log(brands)
     return(
         <div className="container-fluid py-4 py-md-5 px-4 px-md-3">
             <div className="row">

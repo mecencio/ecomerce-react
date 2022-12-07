@@ -1,4 +1,4 @@
-import ItemCount from "../Main/ItemCount";
+import ItemCount from "../ItemList/ItemCount"
 
 function ItemDetail(props) {
     const item = props.item;
