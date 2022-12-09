@@ -1,7 +1,15 @@
+import { useState } from "react";
 import ItemCount from "../ItemList/ItemCount"
 
 function ItemDetail(props) {
     const item = props.item;
+    const [count, setCount] = useState(1);
+
+    const onSub = () => count > 1 && setCount(count - 1);
+    const onAdd = () => count < item.stock && setCount(count + 1);
+    const addToCart = ()  => {
+        alert("Agregado correctamente");
+    }
 
     return (
         <div className="row card p-3">
@@ -15,11 +23,11 @@ function ItemDetail(props) {
                     <p className="p-3 mt-3 mb-0 border-2 border-success border-bottom border-opacity-50">Marca: {item.brand}</p>
                     <p className="p-3 mb-0 border-2 border-success border-bottom border-opacity-50">Categoria: {item.category}</p>
                     <div className="d-flex align-items-center px-3 py-2 mb-0 border-2 border-success border-bottom border-opacity-50 ">
-                        <img src="../images/truck.svg" alt="truck" style={{width:"8%"}}/>
+                        <img src="../../images/truck.svg" alt="truck" style={{width:"8%"}}/>
                         <p className="m-3">Envío a todo el país.</p>
                     </div>
                     <div className="d-flex align-items-center px-3 py-2 py-3 border-2 border-success border-bottom border-opacity-50 ">
-                        <img src="../images/shield-check.svg" alt="truck" style={{width:"8%"}}/>
+                        <img src="../../images/shield-check.svg" alt="truck" style={{width:"8%"}}/>
                         <div>
                             <p className="mx-3 my-0">Devolución gratis.</p>
                             <p className="mx-3 my-0 fw-light" style={{fontSize:"12px"}}>Durante 30 días a partir del día que lo recibis</p>
@@ -27,8 +35,8 @@ function ItemDetail(props) {
                     </div>
 
                     <div className="mt-5 d-flex flex-column w-50 mx-auto">
-                        <ItemCount id={item.id} stock={item.stock} />
-                        <a href="" className="btn btn-outline-success">Agregar al carrito</a>
+                        <ItemCount onAdd={onAdd} onSub={onSub} count={count}/>
+                        <button className="btn btn-outline-success" onClick={addToCart}>Agregar al carrito</button>
                     </div>
                 </div>
             </div>
