@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../Context/CartContext";
 import ItemCount from "../ItemList/ItemCount"
 
 function ItemDetail(props) {
     const item = props.item;
     const [count, setCount] = useState(1);
+    const { addToCart } = useContext(CartContext);
 
     const onSub = () => count > 1 && setCount(count - 1);
     const onAdd = () => count < item.stock && setCount(count + 1);
-    const addToCart = ()  => {
-        alert("Agregado correctamente");
+    const addItem = ()  => {
+        item.quantity = count;
+        if (addToCart(structuredClone(item))) {
+            alert("Agregado correctamente");
+        } else {
+            alert("No se ha podido agregar el producto \n la cantidad supera nuestro stock");
+        }
     }
 
     return (
@@ -19,7 +26,7 @@ function ItemDetail(props) {
                     <img src={"../"+item.image} alt={item.name} className="p-3 border border-0 w-75"/>
                 </div>
                 <div className="col-4">
-                    <h5 className="text-success text-center my-3 fs-2">$ {item.price}</h5>
+                    <h5 className="text-success text-center my-3 fs-2">{new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(item.price)}</h5>
                     <p className="p-3 mt-3 mb-0 border-2 border-success border-bottom border-opacity-50">Marca: {item.brand}</p>
                     <p className="p-3 mb-0 border-2 border-success border-bottom border-opacity-50">Categoria: {item.category}</p>
                     <div className="d-flex align-items-center px-3 py-2 mb-0 border-2 border-success border-bottom border-opacity-50 ">
@@ -36,7 +43,7 @@ function ItemDetail(props) {
 
                     <div className="mt-5 d-flex flex-column w-50 mx-auto">
                         <ItemCount onAdd={onAdd} onSub={onSub} count={count}/>
-                        <button className="btn btn-outline-success" onClick={addToCart}>Agregar al carrito</button>
+                        <button className="btn btn-outline-success" onClick={addItem}>Agregar al carrito</button>
                     </div>
                 </div>
             </div>
