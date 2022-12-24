@@ -17,10 +17,11 @@ function App () {
                     <NavBar />
                     <Routes>
                         <Route exact path={"/"} element={<Main />} />
-                        <Route exact path={"/brand"} element={<ItemListContainer products={arr_prod} />} />
-                        <Route exact path={"/brand/:brand"} element={<ItemListContainer products={arr_prod} />} />
-                        <Route exact path={"/category"} element={<ItemListContainer products={arr_prod} />} />
-                        <Route exact path={"/category/:category"} element={<ItemListContainer products={arr_prod} />} />
+                        <Route exact path={"/brand"} element={<ItemListContainer />} />
+                        <Route exact path={"/brand/:brand"} element={<ItemListContainer />} />
+                        <Route exact path={"/category"} element={<ItemListContainer />} />
+                        <Route exact path={"/category/:category"} element={<ItemListContainer />} />
+                        <Route exact path={"/search/:search"} element={<ItemListContainer title="Resultado de la búsqueda"/>} />
                         <Route exact path={"/item/:id"} element={<ItemDetailContainer item={arr_prod} />} />
                         <Route exact path={"/cart"} element={<Cart />} />
                         <Route exact path={"*"} element={<Error404 />} />

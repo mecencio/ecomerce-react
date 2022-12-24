@@ -5,6 +5,7 @@ import Spinner from "../General/Spinner";
 import Breadcrumb from "./Breadcrumb";
 import ItemDetail from "./ItemDetail";
 import ItemList from "../ItemList/ItemList"
+import { getFirestore, getDoc, doc } from "firebase/firestore"
 
 function ItemDetailContainer (props) {
     const [product, setProduct] = useState({});
@@ -14,10 +15,10 @@ function ItemDetailContainer (props) {
 
     useEffect(() => {
         setLoading(true);
-        fetchBase(props.item)
-        .then(result => {
-            setProduct(id ? result.filter(item => item.id === parseInt(id))[0] : result); 
-            setNewArrayProd(id ? result.filter(item => item.id !== parseInt(id)) : result)
+        const db = getFirestore();
+
+        getDoc(doc(db, "products", id)).then((snap)=> {
+            setProduct({id:snap.id, ...snap.data()})
             setLoading(false);
         })
     }, [id]);

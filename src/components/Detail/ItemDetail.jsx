@@ -23,7 +23,7 @@ function ItemDetail(props) {
             <h4 className="w-100 my-2 fw-semibold">{item.name}</h4>
             <div className="d-flex border-1 border-bottom">
                 <div className="d-flex col-8">
-                    <img src={"../"+item.image} alt={item.name} className="p-3 border border-0 w-75"/>
+                    <img src={item.image} alt={item.name} className="p-3 border border-0 w-75"/>
                 </div>
                 <div className="col-4">
                     <h5 className="text-success text-center my-3 fs-2">{new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(item.price)}</h5>
