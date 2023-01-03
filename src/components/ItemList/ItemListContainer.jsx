@@ -1,9 +1,11 @@
-import { fetchBase } from "../../utils/fetchBase";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Spinner from "../General/Spinner";
+import { collection, getDocs, getFirestore, limit, orderBy, query, where } from "firebase/firestore"
+import { useEffect, useState } from "react";
+
 import ItemList from "../ItemList/ItemList";
-import { getFirestore, getDocs, collection, query, where, orderBy, limit } from "firebase/firestore"
+import Spinner from "../General/Spinner";
+import { arr_prod } from "../../utils/products";
+import { fetchBase } from "../../utils/fetchBase";
+import { useParams } from "react-router-dom";
 
 function ItemListContainer (props) {
     const [products, setProducts] = useState([]);
@@ -12,25 +14,43 @@ function ItemListContainer (props) {
 
     useEffect(() => {
         setLoading(true);
-        const db = getFirestore();
-        const productsCollection = collection (db, "products");
-        let q;
+        setTimeout(() => {
         if ((category || brand || search)?true:false) {
             if (category) {
-                q = query(productsCollection, where("category", "==", category));
+                setProducts(arr_prod.filter(item => item.category === category));
             } else if (search) {
-                q = query(productsCollection, where("name", ">=", search), where("name", "<=", search+ '\uf8ff'));
+                setProducts(arr_prod.filter(item => item.name.toLowerCase().includes(search)));
             } else {
-                q = query(productsCollection, where("brand", "==", brand));
+                setProducts(arr_prod.filter(item => item.brand === brand));
             }
         } else {
-            q = query(productsCollection, orderBy("stock", "desc"), limit(15));
+            setProducts(arr_prod);
         }
-        getDocs(q).then((data) => {
-            setProducts(data.docs.map((item) => ({id:item.id, ...item.data()})))
-            setLoading(false);
-        })
-    }, [category, brand, search]);
+        setLoading(false);
+        }, 2000);
+    }, [category,brand,search]);
+
+    // useEffect(() => {
+    //     setLoading(true);
+    //     const db = getFirestore();
+    //     const productsCollection = collection (db, "products");
+    //     let q;
+    //     if ((category || brand || search)?true:false) {
+    //         if (category) {
+    //             q = query(productsCollection, where("category", "==", category));
+    //         } else if (search) {
+    //             q = query(productsCollection, where("name", ">=", search), where("name", "<=", search+ '\uf8ff'));
+    //         } else {
+    //             q = query(productsCollection, where("brand", "==", brand));
+    //         }
+    //     } else {
+    //         q = query(productsCollection, orderBy("stock", "desc"), limit(15));
+    //     }
+    //     getDocs(q).then((data) => {
+    //         setProducts(data.docs.map((item) => ({id:item.id, ...item.data()})))
+    //         setLoading(false);
+    //     })
+    // }, [category, brand, search]);
 
     return(
         <div className="container-fluid my-5">

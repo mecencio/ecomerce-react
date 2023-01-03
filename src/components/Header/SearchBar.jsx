@@ -1,18 +1,33 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+
+import { arr_prod } from "../../utils/products";
 
 function SearchBar () {
-    const [search, setSearch] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResult, setSearchResult] = useState([]);
+    const navigate = useNavigate();
 
-    let handleSubmit = (event) => {
+    const handleChange = (event) => {
         event.preventDefault();
-        setSearch(event.target.value.charAt(0).toUpperCase() + event.target.value.slice(1).toLowerCase());
+        setSearchTerm(event.target.value.toLowerCase());
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        navigate("/search/"+searchTerm)
+    }
+
+    useEffect(() => {
+        setSearchResult(
+            arr_prod.filter(item => item.name.toLowerCase().includes(searchTerm))
+        );
+    }, [searchTerm])
+
     return (
-        <form className="d-flex col-4" role="search">
-            <input onChange={handleSubmit} name="searchInput" className="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search"/>
-            <NavLink to={"/search/"+search} className="btn btn-outline-success">Search</NavLink>
+        <form className="d-flex col-4" role="search" onSubmit={handleSubmit}>
+            <input onChange={handleChange} name="searchInput" className="form-control me-2" placeholder="Buscar..." aria-label="Buscar"/>
+            <NavLink to={"/search/"+searchTerm} className="btn btn-outline-success">Buscar</NavLink>
         </form>
     )
 }

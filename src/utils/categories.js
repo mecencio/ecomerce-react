@@ -1,3 +1,1 @@
-import { arr_prod } from "./products";
-
-export const categories = [...new Set(arr_prod.map(item => item.category))];
+export const categories = ["Motherboard", "Procesador", "Memoria RAM", "Gabinete", "Placa de video", "Disco", "Fuente de alimentacion"];

@@ -1,11 +1,12 @@
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { fetchBase } from "../../utils/fetchBase";
-import Spinner from "../General/Spinner";
+
 import Breadcrumb from "./Breadcrumb";
 import ItemDetail from "./ItemDetail";
 import ItemList from "../ItemList/ItemList"
-import { getFirestore, getDoc, doc } from "firebase/firestore"
+import Spinner from "../General/Spinner";
+import {arr_prod} from '../../utils/products'
+import { useParams } from "react-router-dom";
 
 function ItemDetailContainer (props) {
     const [product, setProduct] = useState({});
@@ -15,13 +16,21 @@ function ItemDetailContainer (props) {
 
     useEffect(() => {
         setLoading(true);
-        const db = getFirestore();
-
-        getDoc(doc(db, "products", id)).then((snap)=> {
-            setProduct({id:snap.id, ...snap.data()})
+        setTimeout(() => {
+            setProduct(arr_prod.filter(item => item.id === id));
             setLoading(false);
-        })
-    }, [id]);
+        }, 2000);
+    }, [id])
+
+    // useEffect(() => {
+    //     setLoading(true);
+    //     const db = getFirestore();
+
+    //     getDoc(doc(db, "products", id)).then((snap)=> {
+    //         setProduct({id:snap.id, ...snap.data()})
+    //         setLoading(false);
+    //     })
+    // }, [id]);
 
     return(
         <div>
