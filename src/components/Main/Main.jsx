@@ -1,7 +1,6 @@
+import ItemListContainer from "../ItemList/ItemListContainer";
 import Slide from "./MainSlide"
 import { arr_prod } from "../../utils/products";
-import ItemListContainer from "../ItemList/ItemListContainer";
-
 
 function Main () {
 

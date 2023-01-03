@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+
 import { CartContext } from "../Context/CartContext";
 import ItemCount from "../ItemList/ItemCount"
 
@@ -43,7 +44,7 @@ function ItemDetail(props) {
 
                     <div className="mt-5 d-flex flex-column w-50 mx-auto">
                         <ItemCount onAdd={onAdd} onSub={onSub} count={count}/>
-                        <button className="btn btn-outline-success" onClick={addItem}>Agregar al carrito</button>
+                        <button className="btn btn-outline-success mb-4" onClick={addItem}>Agregar al carrito</button>
                     </div>
                 </div>
             </div>

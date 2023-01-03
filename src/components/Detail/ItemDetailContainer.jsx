@@ -8,7 +8,7 @@ import Spinner from "../General/Spinner";
 import {arr_prod} from '../../utils/products'
 import { useParams } from "react-router-dom";
 
-function ItemDetailContainer (props) {
+function ItemDetailContainer () {
     const [product, setProduct] = useState({});
     const [newArrayProd, setNewArrayProd] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -17,7 +17,8 @@ function ItemDetailContainer (props) {
     useEffect(() => {
         setLoading(true);
         setTimeout(() => {
-            setProduct(arr_prod.filter(item => item.id === id));
+            console.log(arr_prod.filter(item => item.id == id))
+            setProduct(...arr_prod.filter(item => item.id == id));
             setLoading(false);
         }, 2000);
     }, [id])

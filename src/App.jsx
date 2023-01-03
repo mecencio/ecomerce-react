@@ -1,13 +1,14 @@
-import Main from "./components/Main/Main";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import Cart from "./components/Cart/Cart";
+import CartProvider from "./components/Context/CartContext";
+import Error404 from "./components/General/Error404";
 import Footer from "./components/Footer/Footer";
-import NavBar from "./components/Header/NavBar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { arr_prod } from "./utils/products";
 import ItemDetailContainer from "./components/Detail/ItemDetailContainer";
 import ItemListContainer from "./components/ItemList/ItemListContainer";
-import Error404 from "./components/General/Error404";
-import CartProvider from "./components/Context/CartContext";
-import Cart from "./components/Cart/Cart";
+import Main from "./components/Main/Main";
+import NavBar from "./components/Header/NavBar";
+import { arr_prod } from "./utils/products";
 
 function App () {
     return (
@@ -22,7 +23,7 @@ function App () {
                         <Route exact path={"/category"} element={<ItemListContainer />} />
                         <Route exact path={"/category/:category"} element={<ItemListContainer />} />
                         <Route exact path={"/search/:search"} element={<ItemListContainer title="Resultado de la búsqueda"/>} />
-                        <Route exact path={"/item/:id"} element={<ItemDetailContainer item={arr_prod} />} />
+                        <Route exact path={"/item/:id"} element={<ItemDetailContainer/>} />
                         <Route exact path={"/cart"} element={<Cart />} />
                         <Route exact path={"*"} element={<Error404 />} />
                     </Routes>

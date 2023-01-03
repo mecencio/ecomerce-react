@@ -1,7 +1,7 @@
-import SearchBar from "./SearchBar";
-import User from "./User";
 import CartWidget from "./CartWidget"
 import { NavLink } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import User from "./User";
 import { categories } from "../../utils/categories";
 
 function NavBar () {

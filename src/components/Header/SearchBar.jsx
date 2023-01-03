@@ -26,7 +26,7 @@ function SearchBar () {
 
     return (
         <form className="d-flex col-4" role="search" onSubmit={handleSubmit}>
-            <input onChange={handleChange} name="searchInput" className="form-control me-2" placeholder="Buscar..." aria-label="Buscar"/>
+            <input onChange={handleChange} name="searchInput" className="form-control me-2 shadow-none border border-success" placeholder="Buscar..." aria-label="Buscar"/>
             <NavLink to={"/search/"+searchTerm} className="btn btn-outline-success">Buscar</NavLink>
         </form>
     )

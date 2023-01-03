@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 
 import { CartContext } from "../Context/CartContext";
 import ItemCount from "../ItemList/ItemCount";
+import { NavLink } from "react-router-dom";
 
 function ItemCart(props) {
     const { increase, decrease, removeItem } = useContext(CartContext)
@@ -23,7 +24,7 @@ function ItemCart(props) {
         <div className="d-flex my-3 px-2">
             <img src={props.product.image} alt={props.product.name} style={{width:"150px", height:"150px"}} />
             <div className="d-flex flex-column px-3">
-                <p className="fw-semibold">{props.product.name}</p>
+                <NavLink to={"/item/"+props.product.id} className="text-decoration-none text-success fw-semibold">{props.product.name}</NavLink>
                 <div className="my-3 d-flex px-3">
                     <ItemCount onAdd={onAdd} onSub={onSub} count={count}/>
                     <button type="button" className="btn btn-outline-success fw-bold m-3" onClick={remove}>
