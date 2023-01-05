@@ -1,10 +1,19 @@
-import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+
 import { CartContext } from "../Context/CartContext";
 import ItemCart from "./ItemCart";
+import { NavLink } from "react-router-dom";
 
 function Cart() {
     const {cart, getTotal, cartSize} = useContext(CartContext)
+    const [classes, setClasses] = useState("btn btn-outline-success w-50 my-3");
+
+    useEffect(() => {
+        if (cartSize) 
+            setClasses("btn btn-outline-success w-50 my-3")
+        else
+            setClasses("btn btn-outline-success w-50 my-3 disabled")
+    }, [cartSize])
 
     return (
         <div className="d-flex flex-row">
@@ -26,7 +35,7 @@ function Cart() {
                     <p className="px-1 fs-5 fw-semibold">Total: </p>
                     <p className="px-1 fs-5">{getTotal()}</p>
                 </div>
-                <button type="button" className="btn btn-outline-success w-50 my-3">Continuar</button>
+                <NavLink to="/checkout" type="button" className={classes} id="resumeButton">Continuar</NavLink>
             </div>
         </div>
     )

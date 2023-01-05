@@ -2,11 +2,8 @@ import List from "./List";
 import { brands } from "../../utils/brands";
 import { categories } from "../../utils/categories";
 
-
 function FooterContent () {
-    let array_links =["Inicio", "Quienes Somos", "Contáctenos"];
-
-    let array_ayuda =["FAQ", "Politica de privacidad", "Botón de arrepentimiento"];
+    let array_links =["Inicio", "Contactenos"];
 
     return(
         <div className="container-fluid py-4 py-md-5 px-4 px-md-3">
@@ -18,7 +15,6 @@ function FooterContent () {
                 <List title={"Links"} group={"link"} arr={array_links} />
                 <List title={"Categorias"} group={"category"} arr={categories} />
                 <List title={"Marcas"} group={"brand"} arr={brands} />
-                <List title={"Ayuda"} group={"help"} arr={array_ayuda} />
             </div>
         </div>
     );
