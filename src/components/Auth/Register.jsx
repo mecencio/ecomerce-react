@@ -1,4 +1,4 @@
-function Login() {
+function Register() {
     return (
         <div style={{
             backgroundColor: '#ffffff',
@@ -23,4 +23,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Register;
