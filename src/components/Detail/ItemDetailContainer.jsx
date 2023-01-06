@@ -1,3 +1,4 @@
+import { NavLink, useParams } from "react-router-dom";
 import { doc, getDoc, getFirestore } from "firebase/firestore"
 import { useEffect, useState } from "react";
 
@@ -6,7 +7,6 @@ import ItemDetail from "./ItemDetail";
 import ItemList from "../ItemList/ItemList"
 import Spinner from "../General/Spinner";
 import {arr_prod} from '../../utils/products'
-import { useParams } from "react-router-dom";
 
 function ItemDetailContainer () {
     const [product, setProduct] = useState({});
@@ -38,6 +38,13 @@ function ItemDetailContainer () {
             { 
                 loading? 
                     <Spinner />
+                : !product ? 
+                <div className="container my-3">
+                    <div className="alert alert-danger text-center mt-3">
+                        <p>Lo sentimos, el producto ingresado no existe.</p>
+                        <NavLink to="/" type="button" className="btn btn-secondary w-50 py-1">Volver</NavLink>
+                    </div>
+                </div>
                 :
                 <div className="container my-3">
                     <Breadcrumb item={product} />

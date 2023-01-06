@@ -1,7 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css'
+
+import { ToastContainer, toast } from "react-toastify";
 import { useContext, useState } from "react";
 
 import { CartContext } from "../Context/CartContext";
-import ItemCount from "../ItemList/ItemCount"
+import ItemCount from "../ItemList/ItemCount";
 
 function ItemDetail(props) {
     const item = props.item;
@@ -13,9 +16,27 @@ function ItemDetail(props) {
     const addItem = ()  => {
         item.quantity = count;
         if (addToCart(structuredClone(item))) {
-            alert("Agregado correctamente");
+            toast.success('Producto agregado correctamente', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         } else {
-            alert("No se ha podido agregar el producto \n la cantidad supera nuestro stock");
+            toast.error("No se ha podido agregar el producto. La cantidad supera nuestro stock", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         }
     }
 
@@ -46,6 +67,7 @@ function ItemDetail(props) {
                         <ItemCount onAdd={onAdd} onSub={onSub} count={count}/>
                         <button className="btn btn-outline-success mb-4" onClick={addItem}>Agregar al carrito</button>
                     </div>
+                    <ToastContainer />
                 </div>
             </div>
             <div className="mt-5">

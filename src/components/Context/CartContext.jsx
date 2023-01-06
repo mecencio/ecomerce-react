@@ -4,10 +4,12 @@ export const CartContext = createContext();
 
 function CartProvider ({children}) {
     const [cart, setCart] = useState([]);
+    const [total, setTotal] = useState(0);
 
     function addToCart (product) {
         if (getItem(product.id) === undefined) {
-            setCart([...cart, product])
+            setCart([...cart, product]);
+            setTotal(getTotal());
             return true
         } else {
             return updateQuantity(product);
@@ -20,6 +22,7 @@ function CartProvider ({children}) {
             removeItem(item.id);
             item.quantity += product.quantity;
             setCart([...cart, item]);
+            setTotal(getTotal());
             return true;
         } else return false;
     }
@@ -41,6 +44,7 @@ function CartProvider ({children}) {
         const item = getItem(id);
         if (item.quantity < item.stock) {
             item.quantity++;
+            setTotal(getTotal());
         }
     }
 
@@ -50,6 +54,7 @@ function CartProvider ({children}) {
         if (item.quantity <= 0) {
             removeItem(id);
         }
+        setTotal(getTotal());
     }
 
     function getItem(id) {
@@ -62,7 +67,7 @@ function CartProvider ({children}) {
     }
 
     return (
-        <CartContext.Provider value={{cart, addToCart, removeItem, cartSize:cart.length, increase, decrease, clear, getTotal }}>
+        <CartContext.Provider value={{cart, total, addToCart, removeItem, cartSize:cart.length, increase, decrease, clear, setTotal, getTotal }}>
             {children}
         </CartContext.Provider>
     )

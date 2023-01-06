@@ -7,6 +7,8 @@ import { NavLink } from "react-router-dom";
 function ItemCart(props) {
     const { increase, decrease, removeItem } = useContext(CartContext)
     const [count, setCount] = useState(props.product.quantity);
+    const options = { style: 'currency', currency: 'ARS' };
+    const numberFormat = new Intl.NumberFormat('es-AR', options);
 
     const onSub = () => {
         decrease(props.product.id);
@@ -21,7 +23,7 @@ function ItemCart(props) {
     }
 
     return (
-        <div className="d-flex my-3 px-2">
+        <div className="d-flex align-content-between my-3 px-2">
             <img src={props.product.image} alt={props.product.name} style={{width:"150px", height:"150px"}} />
             <div className="d-flex flex-column px-3">
                 <NavLink to={"/item/"+props.product.id} className="text-decoration-none text-success fw-semibold">{props.product.name}</NavLink>
@@ -33,6 +35,9 @@ function ItemCart(props) {
                         </svg>
                     </button>
                 </div>
+            </div>
+            <div className="ms-auto p-5 text-success">
+                <h5>{numberFormat.format(count * props.product.price)}</h5>
             </div>
         </div>
     )
