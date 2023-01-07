@@ -11,6 +11,7 @@ import Login from "./components/Auth/Login";
 import Main from "./components/Main/Main";
 import NavBar from "./components/Header/NavBar";
 import { arr_prod } from "./utils/products";
+import Register from "./components/Auth/Register";
 
 function App () {
     return (
@@ -29,6 +30,7 @@ function App () {
                         <Route exact path={"/cart"} element={<Cart />} />
                         <Route exact path={"/checkout"} element={<Checkout />} />
                         <Route exact path={"/login"} element={<Login />} />
+                        <Route exact path={"/register"} element={<Register />} />
                         <Route exact path={"*"} element={<Error404 />} />
                     </Routes>
                     <Footer />
