@@ -1,4 +1,39 @@
+import { ToastContainer, toast } from "react-toastify";
+
 function Register() {
+    const handlerChangeName = (event) => {
+        const length = event.target.value.length >= 1;
+        const result = event.target.value.replace(/[A-Z]|[a-z]/g, "") === "";
+        console.log(event.target);
+        if (result && length) {
+            event.target.className = "form-control border border-success";
+        } else if (!length) {
+            event.target.className = "form-control border border-danger";
+            toast.error("Campo obligatorio", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        } else {
+            event.target.className = "form-control border border-danger";
+            toast.error("Solo puede contener letras", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        }
+    }
+
     return (
         <div style={{
             backgroundColor: '#ffffff',
@@ -9,11 +44,11 @@ function Register() {
                 <form className="d-flex flex-column px-5">
                     <div className="form-floating">
                         <label htmlFor="firstName">Nombre: </label>
-                        <input type="text" id="firstName" className="form-control"/>
+                        <input type="text" id="firstName" className="form-control" onBlur={data => handlerChangeName(data)}/>
                     </div>
                     <div className="form-floating my-3">
                         <label htmlFor="lastName">Apellido: </label>
-                        <input type="text" id="lastName" className="form-control"/>
+                        <input type="text" id="lastName" className="form-control" onBlur={data => handlerChangeName(data)}/>
                     </div>
                     <div className="form-floating my-3">
                         <label htmlFor="id">Número Documento: </label>
@@ -37,6 +72,7 @@ function Register() {
                     </div>
                     <input type="hidden" name="submitted" value={"login"} />
                     <button className="btn btn-success m-3 p-2 rounded-3 shadow" type="submit">Ingresar</button>
+                    <ToastContainer />
                 </form>
             </div>
         </div>
